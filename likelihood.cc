@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <cmath>
 
 
 double poisson(double mu, int k) {
@@ -12,9 +13,10 @@ double poisson(double mu, int k) {
 double prob(std::vector<int> daten, double mu) {
   double lik=1;
   for(int k : daten) {
-    poisson
+    double fact=poisson(mu,k);
+    lik*=fact;
   }
-  return 0;
+  return lik;
 }
 
 int main() {
@@ -30,4 +32,6 @@ int main() {
         daten.push_back(n_i);
     }
     fin.close();
+
+    std :: cout <<prob(daten, 3.11538)<< std :: endl ;
 }
