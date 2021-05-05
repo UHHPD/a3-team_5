@@ -34,4 +34,25 @@ int main() {
     fin.close();
 
     std :: cout <<prob(daten, 3.11538)<< std :: endl ;
+
+    ofstream fout("likelihood.txt");
+    ofstream fout2("nll.txt");
+    ofstream fout3("deltanll.txt");
+
+    for(int i = 0 ; i <= 60 ; ++i) {
+      double mu = i/10.0;
+      double l=prob(daten, mu);
+      double nlogl=-2*log(l);
+      double deltanll=nlogl+2*log(prob(daten, 3.11538));
+
+      fout << mu << " " << l << std::endl;
+      fout2 << mu << " " << nlogl << std::endl;
+      fout3 << mu << " " << deltanll << std::endl;
+    }
+    fout.close();
+    fout2.close();
+    fout3.close();
+
+
+    
 }
