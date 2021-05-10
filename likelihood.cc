@@ -19,6 +19,15 @@ double prob(std::vector<int> daten, double mu) {
   return lik;
 }
 
+double likequot(std::vector<int> daten, double mu){
+  double zaehl=prob(daten, mu);
+  double nenn=1;
+  for(int i:daten){
+    nenn*=poisson(i, i);
+  }
+  return zaehl/nenn;
+}
+
 int main() {
     using namespace std;
 
@@ -52,6 +61,14 @@ int main() {
     fout.close();
     fout2.close();
     fout3.close();
+
+    double lq=likequot(daten,3.11538);
+
+    std :: cout << "Likelihood Quotient: " <<lq<< std :: endl ;
+
+    double z=(-2*log(lq)-233)/(sqrt(2*233));
+
+    std :: cout << "Relative Abweichung: " << z << std :: endl ;
 
 
     
