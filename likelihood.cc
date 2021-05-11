@@ -63,6 +63,7 @@ int main() {
     fout3.close();
 
     double lq=likequot(daten,3.11538);
+    lq=-2*log(lq);
 
     std :: cout << "Likelihood Quotient: " <<lq<< std :: endl ;
 
